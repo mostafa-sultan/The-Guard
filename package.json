@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.66.4"
+    "react-native": "0.66.4",
+    "react-native-slider-intro": "^1.0.21"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
