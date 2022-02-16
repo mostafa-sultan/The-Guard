@@ -3,15 +3,12 @@ import SliderIntro from 'react-native-slider-intro';
 
 const slides = [
     {
-        index: 1,
-        title: 'First step',
-        text: 'Simple description.',
-        image: {
-            uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/intro_flight_ticket_booking.png',
-        },
-        backgroundColor: '#febe29',
-    },
+        key: 1,
+        title: 'Title 1',
+        text: 'Description.\nSay something cool',
+        // image: require('./assets/1.jpg'),
+        backgroundColor: '#59b2ab',
+      },
     {
         index: 2,
         title: 'Second step',

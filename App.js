@@ -1,9 +1,9 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
-import IntroSlider from './src/screens/IntroSlider';
+import IntroSlider from './src/screens/introSlider/IntroSlider';
 const App = () => {
   return ( 
-      <IntroSlider />
+      <IntroSlider/>
   );
 };
 export default App;
