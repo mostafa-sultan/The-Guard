@@ -8,7 +8,7 @@ import Tasks from './src/screens/tasks/Tasks';
 import UserProfile from './src/screens/userProfile/UserProfile';
 const App = () => {
   return ( 
-      <Home/>
+      <Login/>
   );
 };
 export default App;
