@@ -55,8 +55,8 @@ class Tasks extends Component {
                                     </View>
                                     <View style={styles.eventContent}>
                                         <Text style={styles.eventTime}>10:00 am - 10:45 am</Text>
-                                        <Text style={styles.userName}>John Doe</Text>
-                                        <Text style={styles.description}>Lorem ipsum dolor sit amet, elit consectetur</Text>
+                                        <Text style={styles.userName}>soltan</Text>
+                                        <Text style={styles.description}>school</Text>
                                     </View>
                                 </View>
                             </TouchableOpacity>

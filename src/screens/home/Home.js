@@ -3,12 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
-  FlatList,
-  Dimensions,
+  Image,
   Alert,
-  ScrollView
+  ScrollView,
+  FlatList,
 } from 'react-native';
 
 export default class Home extends Component {
@@ -16,45 +15,47 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible:false,
-      userSelected:[],
       data: [
-        {id:1,  name: "Comunity",   image:"https://img.icons8.com/clouds/100/000000/groups.png",           count:124.711},
-        {id:2,  name: "Housing",    image:"https://img.icons8.com/color/100/000000/real-estate.png",       count:234.722},
-        {id:3,  name: "Jobs",       image:"https://img.icons8.com/color/100/000000/find-matching-job.png", count:324.723} ,
-        {id:4,  name: "Personal",   image:"https://img.icons8.com/clouds/100/000000/employee-card.png",    count:154.573} ,
-        {id:5,  name: "For sale",   image:"https://img.icons8.com/color/100/000000/land-sales.png",        count:124.678} ,
+        {id:1,  title: "devices",      color:"#FF4500", image:"https://img.icons8.com/color/70/000000/name.png"},
+        {id:2,  title: "blog",     color:"#87CEEB", image:"https://img.icons8.com/office/70/000000/home-page.png"},
+        {id:3,  title: "tracking",     color:"#4682B4", image:"https://img.icons8.com/color/70/000000/two-hearts.png"} ,
+        {id:4,  title: "add task",   color:"#6A5ACD", image:"https://img.icons8.com/color/70/000000/family.png"} ,
+        {id:5,  title: "map",  color:"#FF69B4", image:"https://img.icons8.com/color/70/000000/groups.png"} ,
+        {id:6,  title: "helth tracking",   color:"#00BFFF", image:"https://img.icons8.com/color/70/000000/classroom.png"} , 
       ]
     };
   }
 
-  clickEventListener = (item) => {
-    Alert.alert('Message', 'Item clicked. '+item.name);
+  clickEventListener(item) {
+    Alert.alert(item.title)
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <FlatList 
-          style={styles.contentList}
-          columnWrapperStyle={styles.listContainer}
+        <FlatList style={styles.list}
+          contentContainerStyle={styles.listContainer}
           data={this.state.data}
+          horizontal={false}
+          numColumns={2}
           keyExtractor= {(item) => {
             return item.id;
           }}
           renderItem={({item}) => {
-          return (
-            <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
-              <Image style={styles.image} source={{uri: item.image}}/>
-              <View style={styles.cardContent}>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.count}>{item.count}</Text>
-                <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
-                  <Text style={styles.followButtonText}>Explore now</Text>  
+            return (
+              <View>
+                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => {this.clickEventListener(item)}}>
+                  <Image style={styles.cardImage} source={{uri:item.image}}/>
                 </TouchableOpacity>
+
+                <View style={styles.cardHeader}>
+                  <View style={{alignItems:"center", justifyContent:"center"}}>
+                    <Text style={[styles.title, {color:item.color}]}>{item.title}</Text>
+                  </View>
+                </View>
               </View>
-            </TouchableOpacity>
-          )}}/>
+            )
+          }}/>
       </View>
     );
   }
@@ -63,72 +64,68 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    marginTop:20,
-    backgroundColor:"#ebf0f7"
+    marginTop:40,
+    backgroundColor:'#fff',
   },
-  contentList:{
-    flex:1,
+  list: {
+    paddingHorizontal: 5,
+    backgroundColor:"#fff",
   },
-  cardContent: {
-    marginLeft:20,
-    marginTop:10
+  listContainer:{
+    alignItems:'center'
   },
-  image:{
-    width:90,
-    height:90,
-    borderRadius:45,
-    borderWidth:2,
-    borderColor:"#ebf0f7"
-  },
-
+  /******** card **************/
   card:{
-    shadowColor: '#00000021',
+    shadowColor: '#474747',
     shadowOffset: {
       width: 0,
       height: 6,
     },
     shadowOpacity: 0.37,
     shadowRadius: 7.49,
+
     elevation: 12,
-
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop:20,
-    backgroundColor:"white",
-    padding: 10,
-    flexDirection:'row',
-    borderRadius:30,
+    marginVertical: 20,
+    marginHorizontal: 40,
+    backgroundColor:"#e2e2e2",
+    //flexBasis: '42%',
+    width:120,
+    height:120,
+    borderRadius:60,
+    alignItems:'center',
+    justifyContent:'center'
   },
-
-  name:{
-    fontSize:18,
+  cardHeader: {
+    paddingVertical: 17,
+    paddingHorizontal: 16,
+    borderTopLeftRadius: 1,
+    borderTopRightRadius: 1,
+    flexDirection: 'row',
+    alignItems:"center", 
+    justifyContent:"center"
+  },
+  cardContent: {
+    paddingVertical: 12.5,
+    paddingHorizontal: 16,
+  },
+  cardFooter:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 12.5,
+    paddingBottom: 25,
+    paddingHorizontal: 16,
+    borderBottomLeftRadius: 1,
+    borderBottomRightRadius: 1,
+  },
+  cardImage:{
+    height: 50,
+    width: 50,
+    alignSelf:'center'
+  },
+  title:{
+    fontSize:24,
     flex:1,
     alignSelf:'center',
-    color:"#3399ff",
     fontWeight:'bold'
   },
-  count:{
-    fontSize:14,
-    flex:1,
-    alignSelf:'center',
-    color:"#6666ff"
-  },
-  followButton: {
-    marginTop:10,
-    height:35,
-    width:100,
-    padding:10,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius:30,
-    backgroundColor: "white",
-    borderWidth:1,
-    borderColor:"#dcdcdc",
-  },
-  followButtonText:{
-    color: "#dcdcdc",
-    fontSize:12,
-  },
-}); 
-            
+});     

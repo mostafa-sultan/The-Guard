@@ -1,50 +1,74 @@
 import React from 'react';
 import SliderIntro from 'react-native-slider-intro';
+import { View, Text , styles } from 'react-native';
 
 const slides = [
     {
         key: 1,
-        title: 'Title 1',
-        text: 'Description.\nSay something cool',
-        // image: require('./assets/1.jpg'),
+        title: 'Welcome To The Guard',
+        text: 'Don\'t worry anymore We are watching and making sure of safety for you ',
+        image: require('../../images/adel.jpg'),
         backgroundColor: '#59b2ab',
       },
     {
         index: 2,
-        title: 'Second step',
+        title: 'فكك من عيالك احنا هنروق عليهم',
         text: 'Simple description for the second step.',
-        image: {
-            uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/intro_flight_ticket_booking.png',
-        },
+        image: require('../../images/adel2.jpg'),
+
         backgroundColor: '#febe29',
     },
     {
         index: 3,
-        title: 'Third step',
-        text: 'Try to make something beauty here.',
-        image: {
-            uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/intro_flight_ticket_booking.png',
-        },
-        backgroundColor: '#febe29',
+        title: 'لا داعي من وداعي',
+        text: 'سامحيني في اندفاعي',
+        image: require('../../images/adel.jpg'),
+        backgroundColor: '#00be29',
     },
     {
         index: 4,
-        title: 'Fourth step',
+        title: 'الان مع الحارث اصبحت الحياه اجمل',
         text: 'Here you can open a custom link.',
-        link: 'https://pccontroller.rnstudio.hu',
-        image: {
-            uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/intro_flight_ticket_booking.png',
-        },
-        backgroundColor: '#febe29',
+        link: 'https://devss.netlify.app/',
+        image: require('../../images/adel.jpg'),
+        backgroundColor: '#88be29',
     },
 ];
 
+const renderNextButton = () => {
+    return (
+      <View  >
+        <Text  >Next</Text>
+      </View>
+    );
+  };
+  
+  const renderDoneButton = () => {
+    return (
+      <View  >
+        <Text  >Done</Text>
+      </View>
+    );
+  };
+  
+  const renderSkipButton = () => {
+    return (
+      <View>
+        <Text >Skip</Text>
+      </View>
+    );
+  };
+
 const IntroSlider = () => {
     return(
-        <SliderIntro data={slides} />
-    ) 
+        <SliderIntro
+        // renderNextButton={renderNextButton}
+        renderDoneButton={renderDoneButton}
+        renderSkipButton={renderSkipButton}
+        navContainerMaxSizePercent={0.3}
+        navigationBarHeight={150}
+        // columnButtonStyle={true}
+        data={slides}
+      />    ) 
 };
 export default IntroSlider;

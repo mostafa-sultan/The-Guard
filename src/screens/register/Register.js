@@ -10,7 +10,7 @@ import {
   Alert
 } from 'react-native';
 
-export default class Regsiter extends Component {
+export default class Register extends Component {
 
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ export default class Regsiter extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={{uri: 'https://png.icons8.com/google/color/120'}}/>
+        <Image style={styles.logo} source={{uri: 'https://toppng.com/uploads/preview/puma-se-eps-vector-logo-free-115740607141kgzpimpmj.png'}}/>
 
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/user/ultraviolet/50/3498db'}}/>
@@ -55,7 +55,7 @@ export default class Regsiter extends Component {
         </View>
 
         <TouchableHighlight style={[styles.buttonContainer, styles.sendButton]} onPress={() => this.onClickListener('login')}>
-          <Text style={styles.buttonText}>Send</Text>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableHighlight>
       </View>
     );
@@ -67,11 +67,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#0598E6',
   },
   logo:{
-    width:120,
-    height:120,
+    width:250,
+    height:250,
     justifyContent: 'center',
     marginBottom:20,
   },

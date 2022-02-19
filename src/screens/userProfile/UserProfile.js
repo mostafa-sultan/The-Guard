@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Image,
+  TouchableOpacity
 } from 'react-native';
 
 export default class UserProfile extends Component {
@@ -11,67 +12,31 @@ export default class UserProfile extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <View style={styles.header}>
-            <View style={styles.headerContent}>
-                <Image style={styles.avatar}
-                  source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+        <View style={styles.header}></View>
+        <Image style={styles.avatar} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMHXP0XTtYG6Tv291OrrjAdGOaQzd0ZTIudw&usqp=CAU' }} />
+        <View style={styles.body}>
+          <Text style={styles.name}>soltan</Text>
+          <Text style={styles.info}>developer</Text>
+          <Text style={styles.description}>Suiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</Text>
+          <View style={styles.bodyContent}>
 
-                <Text style={styles.name}>John Doe </Text>
-                <Text style={styles.userInfo}>jhonnydoe@mail.com </Text>
-                <Text style={styles.userInfo}>Florida </Text>
-            </View>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Text>sitting</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Text>delete account</Text>
+            </TouchableOpacity>
           </View>
-
-          <View style={styles.body}>
-            <View style={styles.item}>
-              <View style={styles.iconContent}>
-                <Image style={styles.icon} source={{uri: 'https://img.icons8.com/color/70/000000/cottage.png'}}/>
-              </View>
-              <View style={styles.infoContent}>
-                <Text style={styles.info}>Home</Text>
-              </View>
-            </View>
-
-            <View style={styles.item}>
-              <View style={styles.iconContent}>
-                <Image style={styles.icon} source={{uri: 'https://img.icons8.com/color/70/000000/administrator-male.png'}}/>
-              </View>
-              <View style={styles.infoContent}>
-                <Text style={styles.info}>Settings</Text>
-              </View>
-            </View>
-
-            <View style={styles.item}>
-              <View style={styles.iconContent}>
-                <Image style={styles.icon} source={{uri: 'https://img.icons8.com/color/70/000000/filled-like.png'}}/>
-              </View>
-              <View style={styles.infoContent}>
-                <Text style={styles.info}>News</Text>
-              </View>
-            </View>
-
-            <View style={styles.item}>
-              <View style={styles.iconContent}>
-                <Image style={styles.icon} source={{uri: 'https://img.icons8.com/color/70/000000/facebook-like.png'}}/>
-              </View>
-              <View style={styles.infoContent}>
-                <Text style={styles.info}>Shop</Text>
-              </View>
-            </View>
-
-          </View>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  header:{
-    backgroundColor: "#DCDCDC",
-  },
-  headerContent:{
-    padding:30,
-    alignItems: 'center',
+  header: {
+    backgroundColor: "#00BFFF",
+    height: 200,
   },
   avatar: {
     width: 130,
@@ -79,44 +44,49 @@ const styles = StyleSheet.create({
     borderRadius: 63,
     borderWidth: 4,
     borderColor: "white",
-    marginBottom:10,
+    marginBottom: 10,
+    alignSelf: 'center',
+    position: 'absolute',
+    marginTop: 130
   },
-  name:{
-    fontSize:22,
-    color:"#000000",
-    fontWeight:'600',
+  name: {
+    fontSize: 22,
+    color: "#FFF000",
+    fontWeight: '600',
   },
-  userInfo:{
-    fontSize:16,
-    color:"#778899",
-    fontWeight:'600',
+  body: {
+    marginTop: 40,
   },
-  body:{
-    backgroundColor: "#778899",
-    height:500,
-    alignItems:'center',
+  bodyContent: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 30,
   },
-  item:{
-    flexDirection : 'row',
+  name: {
+    fontSize: 28,
+    color: "#696969",
+    fontWeight: "600"
   },
-  infoContent:{
-    flex:1,
-    alignItems:'flex-start',
-    paddingLeft:5
+  info: {
+    fontSize: 16,
+    color: "#00BFFF",
+    marginTop: 10
   },
-  iconContent:{
-    flex:1,
-    alignItems:'flex-end',
-    paddingRight:5,
+  description: {
+    fontSize: 16,
+    color: "#696969",
+    marginTop: 10,
+    textAlign: 'center'
   },
-  icon:{
-    width:30,
-    height:30,
-    marginTop:20,
+  buttonContainer: {
+    marginTop: 10,
+    height: 45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    width: 250,
+    borderRadius: 30,
+    backgroundColor: "#00BFFF",
   },
-  info:{
-    fontSize:18,
-    marginTop:20,
-    color: "#FFFFFF",
-  }
 });

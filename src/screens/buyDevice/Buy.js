@@ -19,22 +19,14 @@ export default class Buy extends Component {
       modalVisible:false,
       userSelected:[],
       product: {
-        name:"Lorem ipsum dolor sit amet",
-        description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+        name:"model 33",
+        description:"جامد زوحليقه",
         created:"",
         images:[
           "https://bootdey.com/img/Content/avatar/avatar6.png", 
           "https://bootdey.com/img/Content/avatar/avatar2.png", 
           "https://bootdey.com/img/Content/avatar/avatar3.png", 
-        ],
-        colors:[
-          "#00BFFF",
-          "#FF1493",
-          "#00CED1",
-          "#228B22", 
-          "#20B2AA",
-          "#FF4500",
-        ]
+        ] 
       }
     };
   }
@@ -56,18 +48,7 @@ export default class Buy extends Component {
       </View>
     )
   }
-
-  __renderColors = () => {
-    return(
-      <View style={styles.contentColors}>
-        {this.state.product.colors.map((prop, key) => {
-          return (
-            <TouchableOpacity key={key} style={[styles.btnColor, {backgroundColor:prop}]}></TouchableOpacity> 
-          );
-        })}
-      </View>
-    )
-  }
+ 
 
   render() {
     var mainImage = (this.state.selectedImage) ? this.state.selectedImage: this.state.product.images[0]; 
@@ -87,15 +68,7 @@ export default class Buy extends Component {
               </View>
             </View>
           </View>
-
-          <View style={styles.card}>
-            <View style={styles.cardHeader}>
-              <Text style={styles.cardTitle}>Colors</Text>
-            </View>
-            <View style={styles.cardContent}>
-              {this.__renderColors()}
-            </View>
-          </View>
+ 
 
           <View style={styles.card}>
             <View style={styles.cardHeader}>
