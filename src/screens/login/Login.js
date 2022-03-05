@@ -9,9 +9,34 @@ import {
   Image
 } from 'react-native';
 
-export default class Login extends Component {
+import {useSelector, useDispatch} from 'react-redux';
 
-  render() {
+import {getMovies, addFavorite, removeFavorite} from '../../redux/actions';
+
+export default  Login =() =>{
+  const {movies, favorites} = useSelector(state => state.moviesReducer);
+  const dispatch = useDispatch();
+  const removeFromFavorites = movie => dispatch(removeFavorite(movie));
+  const handleRemoveFavorite = movie => {
+    removeFromFavorites(movie);
+  };
+  const fetchMovies = () => dispatch(getMovies());
+  const addToFavorites = movie => dispatch(addFavorite(movie));
+  
+  const handleAddFavorite = movie => {
+    console.log(movie);
+    addToFavorites(movie);
+  };
+ 
+
+  const exists = movie => {
+    if (favorites.filter(item => item.id === movie.id).length > 0) {
+      return true;
+    }
+
+    return false;
+  };
+
     return (
       <View style={styles.container}>
         <Text style={styles.wel}>The Guard</Text>
@@ -31,21 +56,27 @@ export default class Login extends Component {
               underlineColorAndroid='transparent'/>
         </View>
      
-        <TouchableOpacity style={styles.restoreButtonContainer}>
+        <TouchableOpacity
+        onPress={() =>addToFavorites(movies[0]) }
+        style={styles.restoreButtonContainer}>
             <Text>Forgot?</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
+        <TouchableOpacity 
+        onPress={() =>fetchMovies() }
+        style={[styles.buttonContainer, styles.loginButton]}>
           <Text style={styles.loginText}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity 
+        onPress={() =>console.log(movies.favorites) }
+        style={styles.buttonContainer}>
             <Text>Register</Text>
         </TouchableOpacity>
  
       </View>
     );
-  }
+  
 }
 
 const styles = StyleSheet.create({

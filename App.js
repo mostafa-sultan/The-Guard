@@ -1,4 +1,12 @@
 import React from 'react';
+
+import {Provider} from 'react-redux';
+
+import {store} from './src/redux/store';
+
+
+
+
 import { SafeAreaView, Text } from 'react-native';
 import Adddevice from './src/screens/addDevice/AddDevice';
 import Buy from './src/screens/buyDevice/Buy';
@@ -14,8 +22,12 @@ import Posts from './src/screens/posts/Posts';
 import Register from './src/screens/register/Register';
 const App = () => {
   return (
-    <IntroSlider/>
-    // <Login />
+    // <IntroSlider/>
+   
+    <Provider store={store}>
+    <Login />
+  </Provider>
+
     // <Register/>
     // <Home />
     // <Adddevice/>
