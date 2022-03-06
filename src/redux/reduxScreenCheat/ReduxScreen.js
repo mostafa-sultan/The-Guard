@@ -21,7 +21,7 @@ const Reduxscreen = () => {
     const removeRecord = (movie) => {
         dispatch(removeFromState(movie));
     };
-    const removeState = () => {
+    const removState = () => {
         dispatch(removeState());
     };
     const checkData = (movie) => {
@@ -57,7 +57,7 @@ const Reduxscreen = () => {
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => removeState()}>
+            <TouchableOpacity onPress={() => removState()}>
                 <Text style={{ color: 'black', fontSize: 20, textAlign: 'center', marginBottom: 20 }}>
                     delete global state
                 </Text>
