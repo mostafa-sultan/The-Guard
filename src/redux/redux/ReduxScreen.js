@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getApiData, addToState, removeFromState, removeState } from '../actions';
+import { getApiData, addToState, removeFromState, removeState } from '../../redux/actions';
 
 const Reduxscreen = () => {
     const state = useSelector(state => state.moviesReducer);
