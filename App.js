@@ -20,13 +20,15 @@ import Tasks from './src/screens/tasks/Tasks';
 import UserProfile from './src/screens/userProfile/UserProfile';
 import Posts from './src/screens/posts/Posts';
 import Register from './src/screens/register/Register';
+import Reduxscreen from './src/screens/redux/ReduxScreen';
 const App = () => {
   return (
     // <IntroSlider/>
    
     <Provider store={store}>
-    <Login />
+    <Reduxscreen/>
   </Provider>
+    // <Login />
 
     // <Register/>
     // <Home />

@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  Image
+  Image, StyleSheet,
+  Text, TextInput,
+  TouchableOpacity, View
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, getMovies, removeFavorite } from '../../redux/actions';
 
-import {useSelector, useDispatch} from 'react-redux';
 
-import {getMovies, addFavorite, removeFavorite} from '../../redux/actions';
 
 export default  Login =() =>{
   const {movies, favorites} = useSelector(state => state.moviesReducer);
