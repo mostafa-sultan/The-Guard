@@ -14,7 +14,7 @@ const slides = [
         index: 2,
         title: 'فكك من عيالك احنا هنروق عليهم',
         text: 'Simple description for the second step.',
-        image: require('../../images/adel2.jpg'),
+        image: require('../../images/adel.jpg'),
 
         backgroundColor: '#febe29',
     },

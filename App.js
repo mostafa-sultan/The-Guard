@@ -25,9 +25,9 @@ const App = () => {
   return (
     // <IntroSlider/>
    
-    <Provider store={store}>
-    <Reduxscreen/>
-  </Provider>
+  //   <Provider store={store}>
+  //   <Reduxscreen/>
+  // </Provider>
     // <Login />
 
     // <Register/>
@@ -35,7 +35,7 @@ const App = () => {
     // <Adddevice/>
     // <Buy />
     // <Detail/>
-    // <Mapview/>
+    <Mapview/>
     // <Posts/>
     // <Tasks/>
     // <UserProfile/>
