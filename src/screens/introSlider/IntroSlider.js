@@ -1,74 +1,82 @@
 import React from 'react';
 import SliderIntro from 'react-native-slider-intro';
-import { View, Text , styles } from 'react-native';
+import { View, Text, styles, TouchableOpacity } from 'react-native';
 
 const slides = [
-    {
-        key: 1,
-        title: 'Welcome To The Guard',
-        text: 'Don\'t worry anymore We are watching and making sure of safety for you ',
-        image: require('../../images/adel.jpg'),
-        backgroundColor: '#59b2ab',
-      },
-    {
-        index: 2,
-        title: 'فكك من عيالك احنا هنروق عليهم',
-        text: 'Simple description for the second step.',
-        image: require('../../images/adel.jpg'),
+  {
+    key: 1,
+    title: 'Welcome To The Guard',
+    text: 'View Kids\' Real-Time Location Track the current location of your kids. Stop calling kids \"where are you?\" all the time.',
+    image: require('../../images/slider/1.png'),
+     backgroundColor: '#2998ff',
+  },
+  {
+    index: 2,
+    title: 'Check Location History',
+    text: 'View location history timeline to know kids\' past routine. Never yell at your kids: \"Where have you been?\" again.',
+    image: require('../../images/slider/2.png'),
 
-        backgroundColor: '#febe29',
-    },
-    {
-        index: 3,
-        title: 'لا داعي من وداعي',
-        text: 'سامحيني في اندفاعي',
-        image: require('../../images/adel.jpg'),
-        backgroundColor: '#00be29',
-    },
-    {
-        index: 4,
-        title: 'الان مع الحارث اصبحت الحياه اجمل',
-        text: 'Here you can open a custom link.',
-        link: 'https://devss.netlify.app/',
-        image: require('../../images/adel.jpg'),
-        backgroundColor: '#88be29',
-    },
+    backgroundColor: '#7ed56f',
+  },
+  {
+      index: 3,
+      title: 'Check Location History',
+      text: 'Create zones like \"school\" or \"home\" around specific locations. Get notified when kids break planned routines.',
+      image: require('../../images/slider/3.png'),
+      backgroundColor: '#ffb900',
+  },
+  // {
+  //     index: 4,
+  //     title: 'الان مع الحارث اصبحت الحياه اجمل',
+  //     text: 'Here you can open a custom link.',
+  //     link: 'https://devss.netlify.app/',
+  //     image: require('../../images/adel.jpg'),
+  //     backgroundColor: '#88be29',
+  // },
 ];
 
-const renderNextButton = () => {
+
+
+
+const IntroSlider = ({ navigation }) => {
+
+  const renderNextButton = () => {
     return (
-      <View  >
-        <Text  >Next</Text>
-      </View>
-    );
-  };
-  
-  const renderDoneButton = () => {
-    return (
-      <View  >
-        <Text  >Done</Text>
-      </View>
-    );
-  };
-  
-  const renderSkipButton = () => {
-    return (
-      <View>
-        <Text >Skip</Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Login')}>
+        <Text >Next</Text>
+      </TouchableOpacity>
     );
   };
 
-const IntroSlider = () => {
-    return(
-        <SliderIntro
-        // renderNextButton={renderNextButton}
-        renderDoneButton={renderDoneButton}
-        renderSkipButton={renderSkipButton}
-        navContainerMaxSizePercent={0.3}
-        navigationBarHeight={150}
-        // columnButtonStyle={true}
-        data={slides}
-      />    ) 
+  const renderDoneButton = () => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Login')}>
+        <Text >Done</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderSkipButton = () => {
+    return (
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Login')}>
+        <Text >Skip</Text>
+      </TouchableOpacity>
+
+    );
+  };
+  return (
+    <SliderIntro
+      // renderNextButton={renderNextButton}
+      renderDoneButton={renderDoneButton}
+      renderSkipButton={renderSkipButton}
+      navContainerMaxSizePercent={0.3}
+      navigationBarHeight={150}
+      // columnButtonStyle={true}
+      data={slides}
+    />)
 };
 export default IntroSlider;

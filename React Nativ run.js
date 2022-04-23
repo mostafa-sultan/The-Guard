@@ -1,13 +1,13 @@
 npx react-native run-android
 npx react-native start
 react-native start --reset-cache
-
-adb -s DQOZPBUWFINVNZ75 reverse tcp:8081 tcp:8081
+npm install --save-dev @react-navigation/drawer 
+adb -s ae74ab30 reverse tcp:8081 tcp:8081
 adb devices
 
 expo init my-project
 
-react-native init theGuard
+react-native init facebookClone
 
 
 expo start

@@ -6,13 +6,20 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native';
+import Hedar from '../../component/hedar/Hedar';
 
 export default class Adddevice extends Component {
 
   render() {
     return (
+      <ImageBackground
+      source={require("../test/travel/images/back.png")}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <Hedar/>
       <View style={styles.container}>
         <Text style={styles.wel}>Enter Chip id</Text>
         <View style={styles.inputContainer}>
@@ -20,6 +27,14 @@ export default class Adddevice extends Component {
           <TextInput style={styles.inputs}
               placeholder="ID"
               keyboardType="email-address"
+              underlineColorAndroid='transparent'/>
+        </View>
+        <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}
+              placeholder="Password"
+              keyboardType="visible-password"
+
               underlineColorAndroid='transparent'/>
         </View>
         
@@ -31,6 +46,7 @@ export default class Adddevice extends Component {
 
  
       </View>
+      </ImageBackground>
     );
   }
 }
@@ -39,13 +55,13 @@ const styles = StyleSheet.create({
   wel:{
     fontSize:40,
     marginBottom:15,
-    color:'white',
+    color:'#777',
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#0598E6',
+    // backgroundColor: '#0598E6',
   },
   inputContainer: {
       borderBottomColor: '#F5FCFF',
@@ -82,7 +98,7 @@ const styles = StyleSheet.create({
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: '#2998ff',
   },
   fabookButton: {
     backgroundColor: "#3b5998",

@@ -1,287 +1,122 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
-  Image, StyleSheet,
-  Text, TextInput,
-  TouchableOpacity, View
-} from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, getMovies, removeFavorite } from '../../redux/actions';
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 
+export default function Login({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-
-export default  Login =() =>{
-  const {movies, favorites} = useSelector(state => state.moviesReducer);
-  const dispatch = useDispatch();
-  const removeFromFavorites = movie => dispatch(removeFavorite(movie));
-  const handleRemoveFavorite = movie => {
-    removeFromFavorites(movie);
-  };
-  const fetchMovies = () => dispatch(getMovies());
-  const addToFavorites = movie => dispatch(addFavorite(movie));
-  
-  const handleAddFavorite = movie => {
-    console.log(movie);
-    addToFavorites(movie);
-  };
- 
-
-  const exists = movie => {
-    if (favorites.filter(item => item.id === movie.id).length > 0) {
-      return true;
-    }
-
-    return false;
+  const handelInput = () => {
+    console.log(email + password);
   };
 
-    return (
+
+  return (
+    <ScrollView>
+
       <View style={styles.container}>
-        <Text style={styles.wel}>The Guard</Text>
-        <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}
-              placeholder="Email"
-              keyboardType="email-address"
-              underlineColorAndroid='transparent'/>
+        <Image style={styles.image} source={require("../../images/logo.jpg")} />
+
+
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Email."
+            placeholderTextColor="#003f5c"
+            onChangeText={(email) => setEmail(email)}
+          />
         </View>
-        
-        <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}
-              placeholder="Password"
-              secureTextEntry={true}
-              underlineColorAndroid='transparent'/>
+
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password."
+            placeholderTextColor="#003f5c"
+            secureTextEntry={true}
+            onChangeText={(password) => setPassword(password)}
+          />
         </View>
-     
+
         <TouchableOpacity
-        onPress={() =>addToFavorites(movies[0]) }
-        style={styles.restoreButtonContainer}>
-            <Text>Forgot?</Text>
+          onPress={() => navigation.navigate('ResetPassword')}>
+          <Text style={styles.forgot_button}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Register')}>
+          <Text style={styles.reg_button}>Don't have account? Register</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-        onPress={() =>fetchMovies() }
-        style={[styles.buttonContainer, styles.loginButton]}>
-          <Text style={styles.loginText}>Login</Text>
+        <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => navigation.navigate('Verify')}>
+          <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity 
-        onPress={() =>console.log(movies.favorites) }
-        style={styles.buttonContainer}>
-            <Text>Register</Text>
-        </TouchableOpacity>
- 
       </View>
-    );
-  
+
+    </ScrollView >
+  );
 }
 
 const styles = StyleSheet.create({
-  wel:{
-    fontSize:40,
-    marginBottom:15,
-    color:'white',
-  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0598E6',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  inputContainer: {
-      borderBottomColor: '#F5FCFF',
-      backgroundColor: '#FFFFFF',
-      borderRadius:30,
-      borderBottomWidth: 1,
-      width:250,
-      height:45,
-      marginBottom:15,
-      flexDirection: 'row',
-      alignItems:'center'
+
+  image: {
+    marginBottom: 40,
+    width: 300,
+    height: 300,
   },
-  inputs:{
-      height:45,
-      marginLeft:16,
-      borderBottomColor: '#FFFFFF',
-      flex:1,
+
+  inputView: {
+    backgroundColor: "#fff",
+    borderRadius: 30,
+    width: "70%",
+    height: 45,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: "#ddd",
+    alignItems: "center",
   },
-  icon:{
-    width:30,
-    height:30,
+
+  TextInput: {
+    height: 50,
+    flex: 1,
+    padding: 10,
+    marginLeft: 20,
   },
-  inputIcon:{
-    marginLeft:15,
-    justifyContent: 'center'
+
+  forgot_button: {
+    height: 30,
+    marginBottom: 30,
+    color: "#28b485",
   },
-  buttonContainer: {
-    height:45,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:30,
-  },
-  loginButton: {
-    backgroundColor: '#3498db',
-  },
-  fabookButton: {
-    backgroundColor: "#3b5998",
-  },
-  googleButton: {
-    backgroundColor: "#ff0000",
+  reg_button: {
+    opacity: 0.7,
+    color: "#28b485",
   },
   loginText: {
-    color: 'white',
+    color: "#fff"
   },
-  restoreButtonContainer:{
-    width:250,
-    marginBottom:15,
-    alignItems: 'flex-end'
+
+  loginBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#55c7a",
   },
-  socialButtonContent:{
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center', 
-  },
-  socialIcon:{
-    color: "#FFFFFF",
-    marginRight:5
-  }
 });
-
-
-
-
-
-
-
-// import React, { Component } from 'react';
-// import {
-//   StyleSheet,
-//   Text,
-//   View,
-//   TextInput,
-//   TouchableOpacity,
-//   Alert,
-//   Image
-// } from 'react-native';
-
-// export default class Login extends Component {
-
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <View style={styles.inputContainer}>
-//           <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
-//           <TextInput style={styles.inputs}
-//               placeholder="Email"
-//               keyboardType="email-address"
-//               underlineColorAndroid='transparent'/>
-//         </View>
-        
-//         <View style={styles.inputContainer}>
-//           <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
-//           <TextInput style={styles.inputs}
-//               placeholder="Password"
-//               secureTextEntry={true}
-//               underlineColorAndroid='transparent'/>
-//         </View>
-     
-//         <TouchableOpacity style={styles.restoreButtonContainer}>
-//             <Text>Forgot?</Text>
-//         </TouchableOpacity>
-
-//         <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
-//           <Text style={styles.loginText}>Login</Text>
-//         </TouchableOpacity>
-
-//         <TouchableOpacity style={styles.buttonContainer}>
-//             <Text>Register</Text>
-//         </TouchableOpacity>
-
-//         <TouchableOpacity style={[styles.buttonContainer, styles.fabookButton]}>
-//           <View style={styles.socialButtonContent}>
-//             <Image style={styles.icon} source={{uri: 'https://png.icons8.com/facebook/androidL/40/FFFFFF'}}/>
-//             <Text style={styles.loginText}>Continue with facebook</Text>
-//           </View>
-//         </TouchableOpacity>
-
-//         <TouchableOpacity style={[styles.buttonContainer, styles.googleButton]}>
-//           <View style={styles.socialButtonContent}>
-//             <Image style={styles.icon} source={{uri: 'https://png.icons8.com/google/androidL/40/FFFFFF'}}/>
-//             <Text style={styles.loginText}>Sign in with google</Text>
-//           </View>
-//         </TouchableOpacity>
-//       </View>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#B0E0E6',
-//   },
-//   inputContainer: {
-//       borderBottomColor: '#F5FCFF',
-//       backgroundColor: '#FFFFFF',
-//       borderRadius:30,
-//       borderBottomWidth: 1,
-//       width:250,
-//       height:45,
-//       marginBottom:15,
-//       flexDirection: 'row',
-//       alignItems:'center'
-//   },
-//   inputs:{
-//       height:45,
-//       marginLeft:16,
-//       borderBottomColor: '#FFFFFF',
-//       flex:1,
-//   },
-//   icon:{
-//     width:30,
-//     height:30,
-//   },
-//   inputIcon:{
-//     marginLeft:15,
-//     justifyContent: 'center'
-//   },
-//   buttonContainer: {
-//     height:45,
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginBottom:20,
-//     width:250,
-//     borderRadius:30,
-//   },
-//   loginButton: {
-//     backgroundColor: '#3498db',
-//   },
-//   fabookButton: {
-//     backgroundColor: "#3b5998",
-//   },
-//   googleButton: {
-//     backgroundColor: "#ff0000",
-//   },
-//   loginText: {
-//     color: 'white',
-//   },
-//   restoreButtonContainer:{
-//     width:250,
-//     marginBottom:15,
-//     alignItems: 'flex-end'
-//   },
-//   socialButtonContent:{
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     alignItems: 'center', 
-//   },
-//   socialIcon:{
-//     color: "#FFFFFF",
-//     marginRight:5
-//   }
-// });
