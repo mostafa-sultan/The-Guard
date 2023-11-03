@@ -8,7 +8,7 @@ const getDirections = async (startLoc, destinationLoc) => {
     const KEY = "YOUR GOOGLE API KEY"; //put your API key here.
     //otherwise, you'll have an 'unauthorized' error.
     let resp = await fetch(
-      `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyDw1s_XbmzJK7mqpmvsG3pbiFynfJjxw6g`
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=
     );
     let respJson = await resp.json();
     let points = decode(respJson.routes[0].overview_polyline.points);
